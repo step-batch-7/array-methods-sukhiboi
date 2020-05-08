@@ -5,7 +5,7 @@ Array *filter(Array *src, Predicate predicate)
     int temp[src->length], count = 0;
     for (int i = 0; i < src->length; i++)
     {
-        if (predicate(src->array[i]) == True)
+        if ((*predicate)(src->array[i]))
         {
             temp[i] = src->array[i];
             count++;
