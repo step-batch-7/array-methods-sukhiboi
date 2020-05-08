@@ -2,7 +2,7 @@
 #include "array.h"
 
 int square(int value);
-Bool is_deivisible_by_two(int value);
+Bool is_even(int value);
 int sum(int num_1, int num_2);
 
 void run_map();
@@ -14,7 +14,7 @@ int square(int value)
     return value * value;
 }
 
-Bool is_deivisible_by_two(int value)
+Bool is_even(int value)
 {
     if (value % 2 == 0)
         return True;
@@ -45,7 +45,7 @@ void run_map()
 void run_filter()
 {
     Array *src = create_simple_array();
-    display(filter(src, &is_deivisible_by_two));
+    display(filter(src, &is_even));
 }
 
 void run_reduce()
