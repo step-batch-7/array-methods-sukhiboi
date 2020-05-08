@@ -13,5 +13,6 @@ Array *create_array(int length)
 void display(Array *array)
 {
     for (int i = 0; i < array->length; i++)
-        printf("%d\n", array->array[i]);
+        printf("%d ", array->array[i]);
+    printf("\n");
 }
