@@ -2,18 +2,17 @@
 
 Array *filter(Array *src, Predicate predicate)
 {
-    int length_filtered_array = 0;
+    int temp[src->length], count = 0;
     for (int i = 0; i < src->length; i++)
+    {
         if (predicate(src->array[i]) == True)
         {
-            length_filtered_array++;
+            temp[i] = src->array[i];
+            count++;
         }
-    Array *filtered_array = create_array(length_filtered_array);
-    for (int i = 0, idx = 0; i < src->length; i++)
-        if (predicate(src->array[i]) == True)
-        {
-            filtered_array->array[idx] = src->array[i];
-            idx++;
-        }
+    }
+    Array *filtered_array = create_array(count);
+    for (int i = 0; i < count; i++)
+        filtered_array->array[i] = temp[i];
     return filtered_array;
 }
