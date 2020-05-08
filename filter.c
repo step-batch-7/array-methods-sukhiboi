@@ -1,6 +1,6 @@
 #include "array.h"
 
-Array *filter(Array *src, Predicate predicate)
+Array_ptr filter(Array_ptr src, Predicate predicate)
 {
     int temp[src->length], count = 0;
     for (int i = 0; i < src->length; i++)
@@ -11,7 +11,7 @@ Array *filter(Array *src, Predicate predicate)
             count++;
         }
     }
-    Array *filtered_array = create_array(count);
+    Array_ptr filtered_array = create_array(count);
     for (int i = 0; i < count; i++)
         filtered_array->array[i] = temp[i];
     return filtered_array;

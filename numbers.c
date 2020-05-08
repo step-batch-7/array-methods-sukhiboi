@@ -8,6 +8,7 @@ int sum(int num_1, int num_2);
 void run_map();
 void run_filter();
 void run_reduce();
+Array_ptr create_simple_array(void);
 
 int square(int value)
 {
@@ -26,9 +27,9 @@ int sum(int num_1, int num_2)
     return num_1 + num_2;
 }
 
-Array *create_simple_array(void)
+Array_ptr create_simple_array(void)
 {
-    Array *src = create_array(4);
+    Array_ptr src = create_array(4);
     src->array[0] = 1;
     src->array[1] = 10;
     src->array[2] = 12;
@@ -38,19 +39,19 @@ Array *create_simple_array(void)
 
 void run_map()
 {
-    Array *src = create_simple_array();
+    Array_ptr src = create_simple_array();
     display(map(src, &square));
 }
 
 void run_filter()
 {
-    Array *src = create_simple_array();
+    Array_ptr src = create_simple_array();
     display(filter(src, &is_even));
 }
 
 void run_reduce()
 {
-    Array *src = create_simple_array();
+    Array_ptr src = create_simple_array();
     printf("result: %d", reduce(src, 0, &sum));
 }
 
