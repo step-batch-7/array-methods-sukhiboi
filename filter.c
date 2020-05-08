@@ -7,7 +7,7 @@ Array_ptr filter(Array_ptr src, Predicate predicate)
     {
         if ((*predicate)(src->array[i]))
         {
-            temp[i] = src->array[i];
+            temp[count] = src->array[i];
             count++;
         }
     }
