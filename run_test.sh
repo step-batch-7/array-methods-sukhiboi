@@ -8,5 +8,5 @@ echo "----------------------------------------------"
 ./run_test
 echo "\n"
 rm -rf *.o
-rm filter.c map.c reduce.c
+rm array.c array.h filter.c map.c reduce.c
 rm run_test
