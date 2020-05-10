@@ -15,6 +15,13 @@ Bool is_even(Object value)
     return False;
 }
 
+Object sum(Object val1, Object val2)
+{
+    int value1 = *(int_ptr)val1;
+    int value2 = *(int_ptr)val2;
+    return create_int_element(value1 + value2);
+}
+
 ArrayVoid_ptr create_simple_array_void(void)
 {
     ArrayVoid_ptr src = create_array_void(4);
@@ -37,11 +44,21 @@ void run_filter_void(void)
     display_int(filter_void(src, &is_even));
 }
 
+void run_reduce_void(void)
+{
+    ArrayVoid_ptr src = create_simple_array_void();
+    Object init = create_int_element(0);
+    Object result = reduce_void(src, init, &sum);
+    printf("Result: %d", *(int_ptr)result);
+}
+
 int main(void)
 {
     printf("\nRunning map\n");
     run_map_void();
     printf("\nRunning filter\n");
     run_filter_void();
+    printf("\nRunning reduce\n");
+    run_reduce_void();
     return 0;
 }
