@@ -7,6 +7,14 @@ Object square(Object value)
     return create_int_element(given_value * given_value);
 }
 
+Bool is_even(Object value)
+{
+    int given_value = *(int_ptr)value;
+    if (given_value % 2 == 0)
+        return True;
+    return False;
+}
+
 ArrayVoid_ptr create_simple_array_void(void)
 {
     ArrayVoid_ptr src = create_array_void(4);
@@ -20,13 +28,20 @@ ArrayVoid_ptr create_simple_array_void(void)
 void run_map_void(void)
 {
     ArrayVoid_ptr src = create_simple_array_void();
-    ArrayVoid_ptr mapped_result = map_void(src, &square);
-    display_int(mapped_result);
+    display_int(map_void(src, &square));
+}
+
+void run_filter_void(void)
+{
+    ArrayVoid_ptr src = create_simple_array_void();
+    display_int(filter_void(src, &is_even));
 }
 
 int main(void)
 {
     printf("\nRunning map\n");
     run_map_void();
+    printf("\nRunning filter\n");
+    run_filter_void();
     return 0;
 }
