@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include "array_void.h"
 
+void int_displayer(Object value)
+{
+    printf("%d ", *(int_ptr)value);
+}
+
 Object square(Object value)
 {
     int given_value = *(int_ptr)value;
@@ -35,13 +40,13 @@ ArrayVoid_ptr create_simple_array_void(void)
 void run_map_void(void)
 {
     ArrayVoid_ptr src = create_simple_array_void();
-    display_int(map_void(src, &square));
+    display_void(map_void(src, &square), &int_displayer);
 }
 
 void run_filter_void(void)
 {
     ArrayVoid_ptr src = create_simple_array_void();
-    display_int(filter_void(src, &is_even));
+    display_void(filter_void(src, &is_even), &int_displayer);
 }
 
 void run_reduce_void(void)

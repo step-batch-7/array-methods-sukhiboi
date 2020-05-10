@@ -7,6 +7,7 @@ typedef void *Object;
 typedef Object (*MapperVoid)(Object);
 typedef Bool (*PredicateVoid)(Object);
 typedef Object (*ReducerVoid)(Object, Object);
+typedef void (*Displayer)(Object);
 
 typedef int *int_ptr;
 
@@ -24,6 +25,6 @@ Object reduce_void(ArrayVoid_ptr src, Object init, ReducerVoid reducer);
 
 Object create_int_element(int value);
 ArrayVoid_ptr create_array_void(int length);
-void display_int(ArrayVoid_ptr array);
+void display_void(ArrayVoid_ptr array, Displayer displayer);
 
 #endif

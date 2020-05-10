@@ -17,9 +17,9 @@ ArrayVoid_ptr create_array_void(int length)
     return array;
 }
 
-void display_int(ArrayVoid_ptr array)
+void display_void(ArrayVoid_ptr array, Displayer displayer)
 {
     for (int i = 0; i < array->length; i++)
-        printf("%d ", *(int_ptr)array->array[i]);
+        displayer(array->array[i]);
     printf("\n");
 }
