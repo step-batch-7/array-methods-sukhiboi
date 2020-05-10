@@ -6,7 +6,7 @@ Array_ptr create_array(int length)
 {
     Array_ptr array = malloc(sizeof(Array));
     array->length = length;
-    array->array = (int *)malloc(sizeof(int) * array->length);
+    array->array = (int_ptr)malloc(sizeof(int) * array->length);
     return array;
 }
 

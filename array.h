@@ -9,10 +9,11 @@ typedef enum
 typedef int (*Mapper)(int);
 typedef Bool (*Predicate)(int);
 typedef int (*Reducer)(int, int);
+typedef int *int_ptr;
 
 typedef struct
 {
-  int *array;
+  int_ptr array;
   int length;
 } Array;
 

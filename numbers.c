@@ -1,67 +1,32 @@
 #include <stdio.h>
-#include "array.h"
+#include "array_void.h"
 
-int square(int value);
-Bool is_even(int value);
-int sum(int num_1, int num_2);
-
-void run_map();
-void run_filter();
-void run_reduce();
-Array_ptr create_simple_array(void);
-
-int square(int value)
+Object square(Object value)
 {
-    return value * value;
+    int given_value = *(int_ptr)value;
+    return create_int_element(given_value * given_value);
 }
 
-Bool is_even(int value)
+ArrayVoid_ptr create_simple_array_void(void)
 {
-    if (value % 2 == 0)
-        return True;
-    return False;
-}
-
-int sum(int num_1, int num_2)
-{
-    return num_1 + num_2;
-}
-
-Array_ptr create_simple_array(void)
-{
-    Array_ptr src = create_array(4);
-    src->array[0] = 1;
-    src->array[1] = 10;
-    src->array[2] = 12;
-    src->array[3] = 19;
+    ArrayVoid_ptr src = create_array_void(4);
+    src->array[0] = create_int_element(10);
+    src->array[1] = create_int_element(12);
+    src->array[2] = create_int_element(3);
+    src->array[3] = create_int_element(9);
     return src;
 }
 
-void run_map()
+void run_map_void(void)
 {
-    Array_ptr src = create_simple_array();
-    display(map(src, &square));
-}
-
-void run_filter()
-{
-    Array_ptr src = create_simple_array();
-    display(filter(src, &is_even));
-}
-
-void run_reduce()
-{
-    Array_ptr src = create_simple_array();
-    printf("result: %d", reduce(src, 0, &sum));
+    ArrayVoid_ptr src = create_simple_array_void();
+    ArrayVoid_ptr mapped_result = map_void(src, &square);
+    display_int(mapped_result);
 }
 
 int main(void)
 {
     printf("\nRunning map\n");
-    run_map();
-    printf("\nRunning filter\n");
-    run_filter();
-    printf("\nRunning reduce\n");
-    run_reduce();
+    run_map_void();
     return 0;
 }
